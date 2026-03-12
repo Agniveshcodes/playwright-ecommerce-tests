@@ -1,12 +1,11 @@
 import {test,expect} from '@playwright/test'
+import { loginPage } from '../pages/loginPage'
 
 test('login with valid credentials' , async({page})=>{
-    await page.goto("https://www.saucedemo.com/")
+    const newLogin = new loginPage(page)
 
-    await page.fill('#user-name','visual_user')
-    await page.fill('#password','sceret_sauce')
+    await newLogin.goTOLoginPage()
+    await newLogin.login('visual_user' , 'secret_sauce')
 
-    await page.click('#login-button')
-
-    await expect(page).toHaveURL('https://www.saucedemo.com/')
+    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html")
 })
