@@ -6,5 +6,7 @@ test('login with valid credentials' , async({page})=>{
     await page.fill('#user-name','visual_user')
     await page.fill('#password','sceret_sauce')
 
+    await page.click('#login-button')
+
     await expect(page).toHaveURL('https://www.saucedemo.com/')
 })
